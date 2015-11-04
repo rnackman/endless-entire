@@ -7,8 +7,31 @@
     <title>{{exh.title}} | American Abstract Artists at FiveMyles</title>
   </head>
   <body>
-    <div ng-controller="appController as app">
-    <intro-panel></intro-panel>
-    </div>
+    <section id="introduction">
+      <div id="title">
+        <h1>{{exh.title}}</h1>
+      </div>
+      <div id="intro-panel" ng-show="introShow">
+        <h2>{{exh.subtitle}}</h2>
+        <p>{{exh.dates}}</p>
+        <a href="{{exh.locationUrl}}">{{exh.location}}</a>
+        <p>Curated by {{exh.curator}}</p>
+      </div>
+      <div id="intro-buttons">
+        <button ng-click="toggleIntro()" ng-show="introShow">Enter</button>
+        <button ng-click="toggleIntro()" ng-show="!introShow">More</button>
+      </div>
+    </section>
+    <section id="exhibition" ng-controller="ExhibitionController as exh" ng-show="exhShow">
+      <div ng-repeat="artist in artists">
+        <div id="artwork" ng-repeat="artwork in artist.artworks">
+          <img ng-src="{{artwork.imgsrc}}" width="200" height="200"/>
+          <p><strong>{{artist.name}}</strong></p>
+          <p><em>{{artwork.title}}</em></p>
+          <p>{{artwork.date}}</p>
+          <p>{{artwork.medium}}</p>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
