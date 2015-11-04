@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
     <script src="myApp.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.4.3/packery.pkgd.js"></script>
+
     <title>{{exh.title}} | American Abstract Artists at FiveMyles</title>
   </head>
   <body>
@@ -22,16 +25,26 @@
         <button ng-click="toggleIntro()" ng-show="!introShow">More</button>
       </div>
     </section>
-    <section id="exhibition" ng-controller="ExhibitionController as exh" ng-show="exhShow">
-      <div ng-repeat="artist in artists">
-        <div id="artwork" ng-repeat="artwork in artist.artworks">
+    <section ng-controller="ExhibitionController as exh" ng-show="exhShow" id="exhibition">
+      <div class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks" ng-packery>
           <img ng-src="{{artwork.imgsrc}}" width="200" height="200"/>
-          <p><strong>{{artist.name}}</strong></p>
+          <p><strong>{{artwork.artist}}</strong></p>
           <p><em>{{artwork.title}}</em></p>
           <p>{{artwork.date}}</p>
           <p>{{artwork.medium}}</p>
         </div>
       </div>
     </section>
+    <nav id="artist-index" ng-controller="IndexController as index" ng-show="indexShow">
+      <h6 ng-repeat="artist in artists">{{artist}}</h6>
+    </nav>
+    <script>
+      var $container = $('#exhibition');
+      $container.packery({
+        itemSelector: '.artwork',
+        gutter: 100,
+        columnWidth: 250
+      });
+    </script>
   </body>
 </html>
