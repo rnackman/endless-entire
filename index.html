@@ -26,14 +26,15 @@
       </div>
     </section>
     <section ng-controller="ExhibitionController as exh" ng-show="exhShow" id="exhibition">
-      <div class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks" ng-packery>
+      {{artworks}}
+      <!-- <div class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks" ng-packery>
           <img ng-src="{{artwork.imgsrc}}" width="200" height="200"/>
           <p><strong>{{artwork.artist}}</strong></p>
           <p><em>{{artwork.title}}</em></p>
           <p>{{artwork.date}}</p>
           <p>{{artwork.medium}}</p>
         </div>
-      </div>
+      </div> -->
     </section>
     <nav id="artist-index" ng-controller="IndexController as index" ng-show="indexShow">
       <h6 ng-repeat="artist in artists">{{artist}}</h6>

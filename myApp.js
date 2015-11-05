@@ -48,56 +48,21 @@ app.controller('IndexController', function($scope){
   $scope.artists = ['Emily Berger', 'Creighton Michael', 'Vera Vasek', 'Anne Russinoff'];
 });
 
-app.controller('ExhibitionController', function($scope){
-  $scope.artworks = [
-    {
-      artist: "Emily Berger",
-      title: "Painting 1",
-      date: 1985,
-      medium: "oil on paper",
-      imgsrc: 'images/Hsiao.jpg'
-    },
-    {
-      artist: "Emily Berger",
-      title: "Painting 2",
-      date: 1992,
-      medium: "oil on canvas"
-    },
-    {
-      artist: "Creighton Michael",
-      title: "Painting 3",
-      date: 1985,
-      medium: "oil on paper"
-    },
-    {
-      artist: "Creighton Michael",
-      title: "Painting 5",
-      date: 1992,
-      medium: "oil on canvas"
-    },
-    {
-      artist: "Vera Vasek",
-      title: "Drawing 8",
-      date: 1985,
-      medium: "oil on paper"
-    },
-    {
-      artist: "Vera Vasek",
-      title: "Painting 2",
-      date: 1992,
-      medium: "oil on canvas"
-    },
-    {
-      artist: "Anne Russinoff",
-      title: "Drawing 1",
-      date: 1985,
-      medium: "oil on paper"
-    },
-    {
-      artist: "Anne Russinoff",
-      title: "Drawing 2",
-      date: 1992,
-      medium: "oil on canvas"
+app.controller('ExhibitionController', function($scope, $http){
+  artworks.fetch().then(function(data) {
+    $scope.artworks = data;
+  });
+});
+
+app.factory('artworks', function($timeout, $http) {
+  var Artworks = {
+    fetch: function() {
+      return $timeout(function(){
+        return $http.get('checklist.json').then(function(response) {
+          return response;
+        });
+      }, 30);
     }
-  ];
+  };
+  return Artworks;
 });
