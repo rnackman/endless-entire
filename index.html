@@ -6,7 +6,7 @@
     <script src="myApp.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.4.3/packery.pkgd.js"></script>
-
+    <link rel="stylesheet" href="css/style.css">
     <title>{{exh.title}} | American Abstract Artists at FiveMyles</title>
   </head>
   <body>
@@ -26,13 +26,15 @@
         <button ng-click="toggleIntro()" ng-show="exhShow && introShow">Less</button>
       </div>
     </section>
-    <section ng-controller="ExhibitionController" ng-show="exhShow" id="exhibition">
-      <div class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks" ng-packery>
-          <img ng-src="images/{{artwork.imgsrc}}" height="200" width="auto"/>
-          <p><strong>{{artwork.artist}}</strong></p>
-          <p><em>{{artwork.title}}</em></p>
-          <p>{{artwork.date}}</p>
-          <!-- <p>{{artwork.medium}}</p> -->
+    <section ng-controller="ExhibitionController" ng-show="exhShow">
+      <div id="exhibition" style="margin: 0 10%;">
+        <div style="width:auto;" class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks" ng-packery>
+            <img ng-src="images/{{artwork.imgsrc}}" height="200"/>
+            <p><strong>{{artwork.artist}}</strong></p>
+            <p><em>{{artwork.title}}</em></p>
+            <p>{{artwork.date}}</p>
+            <p>{{artwork.medium}}</p>
+        </div>
       </div>
     </section>
     <nav id="artist-index" ng-controller="IndexController" ng-show="indexShow">

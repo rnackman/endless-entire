@@ -1,0 +1,7 @@
+.artwork {
+  width: auto;
+}
+.artwork.full {
+  width: 100%;
+  height: auto;
+}

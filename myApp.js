@@ -1,6 +1,6 @@
 var app = angular.module('myApp', []);
 
-app.run(function($rootScope) {
+app.run(function($rootScope, $timeout) {
   $rootScope.introShow = true;
   $rootScope.exhShow = false;
   $rootScope.indexShow = true;
@@ -18,10 +18,14 @@ app.run(function($rootScope) {
   $rootScope.openExh = function(){
     $rootScope.exhShow = true;
     $rootScope.introShow = false;
+    $timeout(function(){
+      $rootScope.packery.reloadItems();
+      $rootScope.packery.layout();
+    }, 100);
   };
 });
 
-// Packery directive by @poacher2k - http://jsfiddle.net/8P6mf/2/
+// Packery directive by @poacher2k - http://jsfiddle.net/8P6mf/2/ - with small modifications.
 var ngPackery = app.directive('ngPackery', ['$rootScope', function($rootScope){
   return {
     restrict: 'A',
@@ -31,12 +35,10 @@ var ngPackery = app.directive('ngPackery', ['$rootScope', function($rootScope){
           {
             itemSelector: '.artwork',
             columnWidth: '.artwork',
-            rowHeight: '.artwork',
             gutter: 100,
-            percentPosition: true,
             transitionDuration: '0.6s'          }
         );
-        // $rootScope.packery.bindResize();
+        $rootScope.packery.bindResize();
         $rootScope.packery.appended(element[0]);
         $rootScope.packery.items.splice(1,1);
       } else {
@@ -54,6 +56,7 @@ app.controller('ExhibitionController', ['$scope', '$rootScope', function($scope,
   $scope.artworks = [];
   $rootScope.artists.forEach(function(artist) {
     artist.artworks.forEach(function(artwork) {
+      artwork.artist = artist.first_name+" "+artist.last_name;
       $scope.artworks.push(artwork);
     });
   });
