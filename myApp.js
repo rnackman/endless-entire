@@ -60,6 +60,7 @@ app.controller('ExhibitionController', ['$scope', '$rootScope', function($scope,
       $scope.artworks.push(artwork);
     });
   });
+  $scope.orderProp = 'artist';
 }]);
 
 app.run(function($rootScope) {

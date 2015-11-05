@@ -27,8 +27,16 @@
       </div>
     </section>
     <section ng-controller="ExhibitionController" ng-show="exhShow">
+      <div id="search-sort">
+        Search: <input ng-model="query">
+        Sort: <select ng-model="orderProp">
+          <option value="artist">Artist</option>
+          <option value="date">Date</option>
+          <option value="price">Price</option>
+        </select>
+      </div>
       <div id="exhibition" style="margin: 0 10%;">
-        <div style="width:auto;" class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks" ng-packery>
+        <div style="width:auto;" class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks | filter:query | orderBy:orderProp" ng-packery>
             <img ng-src="images/{{artwork.imgsrc}}" height="200"/>
             <p><strong>{{artwork.artist}}</strong></p>
             <p><em>{{artwork.title}}</em></p>
