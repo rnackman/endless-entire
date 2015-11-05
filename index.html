@@ -21,23 +21,22 @@
         <p>Curated by {{exh.curator}}</p>
       </div>
       <div id="intro-buttons">
-        <button ng-click="toggleIntro()" ng-show="introShow">Enter</button>
+        <button ng-click="openExh()" ng-show="introShow && !exhShow">Enter</button>
         <button ng-click="toggleIntro()" ng-show="!introShow">More</button>
+        <button ng-click="toggleIntro()" ng-show="exhShow && introShow">Less</button>
       </div>
     </section>
-    <section ng-controller="ExhibitionController as exh" ng-show="exhShow" id="exhibition">
-      {{artworks}}
-      <!-- <div class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks" ng-packery>
-          <img ng-src="{{artwork.imgsrc}}" width="200" height="200"/>
+    <section ng-controller="ExhibitionController" ng-show="exhShow" id="exhibition">
+      <div class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks" ng-packery>
+          <img ng-src="images/{{artwork.imgsrc}}" height="200" width="auto"/>
           <p><strong>{{artwork.artist}}</strong></p>
           <p><em>{{artwork.title}}</em></p>
           <p>{{artwork.date}}</p>
-          <p>{{artwork.medium}}</p>
-        </div>
-      </div> -->
+          <!-- <p>{{artwork.medium}}</p> -->
+      </div>
     </section>
-    <nav id="artist-index" ng-controller="IndexController as index" ng-show="indexShow">
-      <h6 ng-repeat="artist in artists">{{artist}}</h6>
+    <nav id="artist-index" ng-controller="IndexController" ng-show="indexShow">
+      <h6 ng-repeat="artist in artists">{{artist.first_name}} {{artist.last_name}}</h6>
     </nav>
     <script>
       var $container = $('#exhibition');
