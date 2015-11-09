@@ -6,7 +6,7 @@
     <script src="myApp.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.4.3/packery.pkgd.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css.scss">
     <title>{{exh.title}} | American Abstract Artists at FiveMyles</title>
   </head>
   <body>
@@ -30,14 +30,14 @@
       <div id="search-sort">
         Search: <input ng-model="query">
         Sort: <select ng-model="orderProp">
-          <option value="artist">Artist</option>
+          <option value="artist_last">Artist</option>
           <option value="date">Date</option>
           <option value="price">Price</option>
         </select>
       </div>
       <div id="exhibition" style="margin: 0 10%;">
         <div style="width:auto;" class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks | filter:query | orderBy:orderProp" ng-packery>
-            <img ng-src="images/{{artwork.imgsrc}}" height="200"/>
+            <img ng-src="images/{{artwork.imgsrc}}" height="400"/>
             <p><strong>{{artwork.artist}}</strong></p>
             <p><em>{{artwork.title}}</em></p>
             <p>{{artwork.date}}</p>
@@ -48,13 +48,6 @@
     <nav id="artist-index" ng-controller="IndexController" ng-show="indexShow">
       <h6 ng-repeat="artist in artists">{{artist.first_name}} {{artist.last_name}}</h6>
     </nav>
-    <script>
-      var $container = $('#exhibition');
-      $container.packery({
-        itemSelector: '.artwork',
-        gutter: 100,
-        columnWidth: 250
-      });
-    </script>
+    <script src="js/sort_resize.js"></script>
   </body>
 </html>

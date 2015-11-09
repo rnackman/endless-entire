@@ -45,7 +45,7 @@ var ngPackery = app.directive('ngPackery', ['$rootScope', function($rootScope){
         $rootScope.packery.appended(element[0]);
       }
       $rootScope.packery.layout();
-    }
+    },
   };
 }]);
 
@@ -57,10 +57,12 @@ app.controller('ExhibitionController', ['$scope', '$rootScope', function($scope,
   $rootScope.artists.forEach(function(artist) {
     artist.artworks.forEach(function(artwork) {
       artwork.artist = artist.first_name+" "+artist.last_name;
+      artwork.artist_first = artist.first_name;
+      artwork.artist_last = artist.last_name;
       $scope.artworks.push(artwork);
     });
   });
-  $scope.orderProp = 'artist';
+  $scope.orderProp = 'artwork.artist_last';
 }]);
 
 app.run(function($rootScope) {
@@ -71,7 +73,7 @@ app.run(function($rootScope) {
     "dates" : 1930,
     "birthplace" : "New York, NY",
     "artworks": [{
-        "imgsrc" : "adams_alice_04",
+        "imgsrc" : "adams_alice_04.jpg",
         "title" : "Scroll Circle, preliminary study 3",
         "date" : 1998,
         "medium" : "graphite on rag paper",
@@ -109,7 +111,7 @@ app.run(function($rootScope) {
     "dates" : 1921,
     "birthplace" : "Stockholm, Sweden",
     "artworks": [{
-        "imgsrc" : "berg_siri_02",
+        "imgsrc" : "berg_siri_02.jpg",
         "title" : "Phases Series: Tape Drawing I",
         "date" : 1978,
         "medium" : "tape on graph paper",
@@ -119,7 +121,7 @@ app.run(function($rootScope) {
         "price" : 5000
     },
     {
-        "imgsrc" : "berg_siri_05",
+        "imgsrc" : "berg_siri_05.jpg",
         "title" : "Phases Series: Tape Drawing II",
         "date" : 1978,
         "medium" : "tape on graph paper",
@@ -157,7 +159,7 @@ app.run(function($rootScope) {
     "dates" : 1949,
     "birthplace" : "Los Angeles, CA",
     "artworks": [{
-        "imgsrc" : "bonfils_susan_04",
+        "imgsrc" : "bonfils_susan_04.jpg",
         "title" : "Collective Diversity #4",
         "date" : 2015,
         "medium" : "mixed media",
@@ -176,7 +178,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "boothe_power_06",
+        "imgsrc" : "boothe_power_06.jpg",
         "title" : "Ellipsis #18",
         "date" : 2015,
         "medium" : "gouache on paper",
@@ -224,7 +226,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "brown_henry_01",
+        "imgsrc" : "brown_henry_01.jpg",
         "title" : "Untitled",
         "date" : 2015,
         "medium" : "graphite on paper",
@@ -262,7 +264,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "clark_james_01",
+        "imgsrc" : "clark_james_01.jpg",
         "title" : "Untitled",
         "date" : 2008,
         "medium" : "charcoal, pastel, phosphorescent pigment and graphite on Arches paper",
@@ -281,7 +283,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "deleget_matthew_03",
+        "imgsrc" : "deleget_matthew_38.jpg",
         "title" : "Ghost Painting 38",
         "date" : 2007,
         "medium" : "orange enamel spray paint on fluorescent yellow-orange paper",
@@ -291,7 +293,7 @@ app.run(function($rootScope) {
         "price" : 1500
     },
     {
-        "imgsrc" : "deleget_matthew_05",
+        "imgsrc" : "deleget_matthew_05.jpg",
         "title" : "Ghost Painting 40",
         "date" : 2007,
         "medium" : "fluorescent orange enamel spray paint on fluorescent yellow-orange paper",
@@ -310,7 +312,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "evertz_gabriele_03",
+        "imgsrc" : "Evertz.jpg",
         "title" : "Untitled",
         "date" : 2009,
         "medium" : "acrylic on paper",
@@ -329,7 +331,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "gluck_heidi_04",
+        "imgsrc" : "gluck_heidi_04.jpg",
         "title" : "Untitled",
         "date" : "2013/2014",
         "medium" : "acrylic and ink on paper",
@@ -348,7 +350,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "goodyear_john_03",
+        "imgsrc" : "goodyear_john_03.jpg",
         "title" : "Geometry in the Primaries (red yellow blue)",
         "date" : 1983,
         "medium" : "lithograph",
@@ -367,7 +369,7 @@ app.run(function($rootScope) {
     "dates" : 1950,
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "gross_james_02",
+        "imgsrc" : "gross_james_02.jpg",
         "title" : "January, Tower",
         "date" : 2014,
         "medium" : "mixed media",
@@ -386,7 +388,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "harlow_lynne_02",
+        "imgsrc" : "harlow_lynne_02.jpg",
         "title" : "Taper",
         "date" : 2015,
         "medium" : "acrylic on paper",
@@ -472,7 +474,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "ideal_phillis_01",
+        "imgsrc" : "ideal_phillis_01.jpg",
         "title" : "Black and White iPhone Series #1",
         "date" : 2014,
         "medium" : "iPhone drawing /archival ink on paper",
@@ -491,7 +493,7 @@ app.run(function($rootScope) {
     "dates" : 1953,
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "jackson_julian_02",
+        "imgsrc" : "jackson_julian_02.jpg",
         "title" : "Phase 2: 4th quarter",
         "date" : 2015,
         "medium" : "graphite, colored pencil and pasted papers on paper",
@@ -510,7 +512,7 @@ app.run(function($rootScope) {
     "dates" : 1943,
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "juszczyk_james_02",
+        "imgsrc" : "juszczyk_james_02.jpg",
         "title" : "Prime7-Y.G.Br.O",
         "date" : 2015,
         "medium" : "acrylic on paper",
@@ -529,7 +531,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "kahn_cecily_04",
+        "imgsrc" : "kahn_cecily_04.jpg",
         "title" : "Untitled",
         "date" : 2014,
         "medium" : "gouache and collage on paper",
@@ -548,7 +550,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "Keller_Marthe_Wellfleet I.jpg",
+        "imgsrc" : "Keller_Marthe_Welfleet I.jpg",
         "title" : "Wellfleet I",
         "date" : 1994,
         "medium" : "watercolor and ink on paper",
@@ -567,7 +569,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "kleinhaut_iona_02",
+        "imgsrc" : "kleinhaut_iona_02.jpg",
         "title" : "Untitled",
         "date" : 2014,
         "medium" : "oil and oil stick on paper",
@@ -624,7 +626,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "logemann_jane_04",
+        "imgsrc" : "logemann_jane_04.jpg",
         "title" : "Spirals",
         "date" : 1999,
         "medium" : "ink, black german etch",
@@ -643,7 +645,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "maine_stephen_06",
+        "imgsrc" : "maine_stephen_06.jpg",
         "title" : "DR15-0399",
         "date" : 2015,
         "medium" : "india ink on paper",
@@ -662,7 +664,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "mann_katinka_01",
+        "imgsrc" : "mann_katinka_01.jpg",
         "title" : "Of Then",
         "date" : 2008,
         "medium" : "paper relief",
@@ -719,7 +721,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "michael_creighton_05",
+        "imgsrc" : "michael_creighton_05.jpg",
         "title" : "ORB 515",
         "date" : 2015,
         "medium" : "paper, acrylic and digital transfer on panel",
@@ -738,7 +740,7 @@ app.run(function($rootScope) {
     "dates" : 1938,
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "mohr_manfred_1",
+        "imgsrc" : "mohr_manfred_1.jpg",
         "title" : "p2200_2531",
         "date" : 2015,
         "medium" : "ink on paper",
@@ -776,7 +778,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "osman_jim_03",
+        "imgsrc" : "osman_jim_03.jpg",
         "title" : "graincircle",
         "date" : 2015,
         "medium" : "ink on paper",
@@ -795,7 +797,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "postiglione_corey_02",
+        "imgsrc" : "postiglione_corey_02.jpg",
         "title" : "Tango Interlude #2",
         "date" : 2014,
         "medium" : "acrylic and light-fast marker on paper",
@@ -814,7 +816,7 @@ app.run(function($rootScope) {
     "dates" : 1935,
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "pozzi_lucio_03",
+        "imgsrc" : "pozzi_lucio_03.jpeg",
         "title" : "Six Friends",
         "date" : 2015,
         "medium" : "graphite powder on paper",
@@ -833,7 +835,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "TK",
+        "imgsrc" : "Rabinovich.jpg",
         "title" : "River Library 21",
         "date" : "2003-2005",
         "medium" : "Ganges River mud and glue on Essindia paper",
@@ -852,7 +854,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "TK",
+        "imgsrc" : "Rockburne.jpg",
         "title" : "Mirror of the Sky",
         "date" : "1994-1998",
         "medium" : "Lascaux Aquacryl, powdered pigment on gold-leaf ground, on papyrus and hand-made paper, mounted on 100% rag museum board",
@@ -890,7 +892,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "row_david_02",
+        "imgsrc" : "row_david_02.jpg",
         "title" : "10 to a Dozen",
         "date" : 2015,
         "medium" : "charcoal on paper",
@@ -985,7 +987,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "Seidl.tiff",
+        "imgsrc" : "Seidl.jpg",
         "title" : "Propeller 4",
         "date" : 2013,
         "medium" : "silver gelatin photograph",
@@ -1023,7 +1025,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "Smith.tiff",
+        "imgsrc" : "Smith.jpg",
         "title" : "Circles and Squares",
         "date" : 2013,
         "medium" : "collage and acrylic on rice paper",
@@ -1042,7 +1044,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "trincere_li_04",
+        "imgsrc" : "trincere_li_04.jpg",
         "title" : "Untitled",
         "date" : 2014,
         "medium" : "wax on paper",
@@ -1061,7 +1063,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "Uchiyama.tif",
+        "imgsrc" : "Uchiyama.jpg",
         "title" : "Shift 4",
         "date" : 2014,
         "medium" : "watercolor on Arches paper",
@@ -1109,7 +1111,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "vail_clover_03",
+        "imgsrc" : "vail_clover_03.jpg",
         "title" : "Untitled",
         "date" : 2014,
         "medium" : "ball point pen on wood panel",
@@ -1214,7 +1216,7 @@ app.run(function($rootScope) {
     "dates" : "",
     "birthplace" : "",
     "artworks": [{
-        "imgsrc" : "zirin_nola_05",
+        "imgsrc" : "zirin_nola_05.jpg",
         "title" : "Marking",
         "date" : 2014,
         "medium" : "mixed media on paper",
