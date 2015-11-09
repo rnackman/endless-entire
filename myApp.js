@@ -3,7 +3,7 @@ var app = angular.module('myApp', []);
 app.run(function($rootScope, $timeout) {
   $rootScope.introShow = true;
   $rootScope.exhShow = false;
-  $rootScope.indexShow = true;
+  $rootScope.indexShow = false;
   $rootScope.exh = {
     title: "Endless, Entire",
     subtitle: "American Abstract Artists and the Circle",
@@ -18,40 +18,14 @@ app.run(function($rootScope, $timeout) {
   $rootScope.openExh = function(){
     $rootScope.exhShow = true;
     $rootScope.introShow = false;
-    $timeout(function(){
-      $rootScope.packery.reloadItems();
-      $rootScope.packery.layout();
-    }, 100);
   };
 });
 
-// Packery directive by @poacher2k - http://jsfiddle.net/8P6mf/2/ - with small modifications.
-var ngPackery = app.directive('ngPackery', ['$rootScope', function($rootScope){
-  return {
-    restrict: 'A',
-    link: function(scope, element, attrs){
-      if($rootScope.packery === undefined || $rootScope.packery === null){
-        $rootScope.packery = new Packery(element[0].parentElement,
-          {
-            itemSelector: '.artwork',
-            columnWidth: '.artwork',
-            gutter: 100,
-            transitionDuration: '0.6s'          }
-        );
-        $rootScope.packery.bindResize();
-        $rootScope.packery.appended(element[0]);
-        $rootScope.packery.items.splice(1,1);
-      } else {
-        $rootScope.packery.appended(element[0]);
-      }
-      $rootScope.packery.layout();
-    },
-  };
-}]);
-
+// Index of artists' names
 app.controller('IndexController', function($scope){
 });
 
+// Artworks in exhibition
 app.controller('ExhibitionController', ['$scope', '$rootScope', function($scope, $rootScope){
   $scope.artworks = [];
   $rootScope.artists.forEach(function(artist) {
@@ -63,8 +37,24 @@ app.controller('ExhibitionController', ['$scope', '$rootScope', function($scope,
     });
   });
   $scope.orderProp = 'artwork.artist_last';
+  $scope.resize = function(){
+
+  }
 }]);
 
+// On click, artworks expand to full size
+app.directive('expandable', function(){
+    return {
+        scope: {},
+        link: function(scope, elem, attrs) {
+            elem.on('click', function(){
+                elem.toggleClass('full');
+            });
+        }
+    };
+});
+
+// JSON for all artworks in exhibition
 app.run(function($rootScope) {
   $rootScope.artists = [
     {

@@ -2,10 +2,9 @@
 <html lang="en" ng-app="myApp">
   <head>
     <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
     <script src="myApp.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.4.3/packery.pkgd.js"></script>
     <link rel="stylesheet" href="css/style.css.scss">
     <title>{{exh.title}} | American Abstract Artists at FiveMyles</title>
   </head>
@@ -35,19 +34,18 @@
           <option value="price">Price</option>
         </select>
       </div>
-      <div id="exhibition" style="margin: 0 10%;">
-        <div style="width:auto;" class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks | filter:query | orderBy:orderProp" ng-packery>
+      <ul id="exhibition" style="margin: 0 10%;">
+        <li isotope-item="isotope-item" class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks | filter:query | orderBy:orderProp" expandable>
             <img ng-src="images/{{artwork.imgsrc}}" height="400"/>
-            <p><strong>{{artwork.artist}}</strong></p>
-            <p><em>{{artwork.title}}</em></p>
-            <p>{{artwork.date}}</p>
-            <p>{{artwork.medium}}</p>
-        </div>
-      </div>
+            <div class="artist-name" lastname="{{artwork.artist_last}}"><strong>{{artwork.artist}}</strong></div>
+            <div class="title" title="{{artwork.title}}">{{artwork.title}}</div>
+            <div class="date" date="{{artwork.date}}">{{artwork.date}}</div>
+            <div class="medium" medium="{{artwork.medium}}">{{artwork.medium}}</div>
+        </li>
+      </ul>
     </section>
     <nav id="artist-index" ng-controller="IndexController" ng-show="indexShow">
       <h6 ng-repeat="artist in artists">{{artist.first_name}} {{artist.last_name}}</h6>
     </nav>
-    <script src="js/sort_resize.js"></script>
   </body>
 </html>

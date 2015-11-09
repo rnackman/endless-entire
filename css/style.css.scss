@@ -1,11 +1,14 @@
+#exhibition {
+  margin: 0 10%;
+}
+
 .artwork {
-  width: auto;
   text-align: center;
+  list-style: none;
   img {
     max-width: 100%;
   }
 }
 .artwork.full {
-  width: 100%;
-  height: auto;
+  color: blue;
 }
