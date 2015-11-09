@@ -25,17 +25,17 @@
         <button ng-click="toggleIntro()" ng-show="exhShow && introShow">Less</button>
       </div>
     </section>
-    <section ng-controller="ExhibitionController" ng-show="exhShow">
+    <section ng-controller="ExhibitionController as exhibition" ng-show="exhShow">
       <div id="search-sort">
-        Search: <input ng-model="query">
-        Sort: <select ng-model="orderProp">
+        Search: <input ng-model="exhibition.query">
+        Sort: <select ng-model="exhibition.orderProp">
           <option value="artist_last">Artist</option>
           <option value="date">Date</option>
           <option value="price">Price</option>
         </select>
       </div>
       <ul id="exhibition" style="margin: 0 10%;">
-        <li isotope-item="isotope-item" class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks | filter:query | orderBy:orderProp" expandable>
+        <li isotope-item="isotope-item" class="artwork" id="artwork-{{$index}}" ng-repeat="artwork in artworks | filter:exhibition.query | orderBy:exhibition.orderProp" expandable>
             <img ng-src="images/{{artwork.imgsrc}}" height="400"/>
             <div class="artist-name" lastname="{{artwork.artist_last}}"><strong>{{artwork.artist}}</strong></div>
             <div class="title" title="{{artwork.title}}">{{artwork.title}}</div>

@@ -36,10 +36,7 @@ app.controller('ExhibitionController', ['$scope', '$rootScope', function($scope,
       $scope.artworks.push(artwork);
     });
   });
-  $scope.orderProp = 'artwork.artist_last';
-  $scope.resize = function(){
-
-  }
+  this.orderProp = 'artwork.artist_last';
 }]);
 
 // On click, artworks expand to full size
