@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
-    <script src="myApp.js"></script>
+    <script src="app/app.js"></script>
     <link rel="stylesheet" href="css/style.css.scss">
     <title>{{exh.title}} | American Abstract Artists at FiveMyles</title>
   </head>
@@ -44,7 +44,7 @@
         </li>
       </ul>
     </section>
-    <nav id="artist-index" ng-controller="IndexController" ng-show="indexShow">
+    <nav id="artist-index" ng-controller="IndexController as index" ng-show="indexShow">
       <h6 ng-repeat="artist in artists">{{artist.first_name}} {{artist.last_name}}</h6>
     </nav>
   </body>

@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('app', []);
 
 app.run(function($rootScope, $timeout) {
   $rootScope.introShow = true;
@@ -27,6 +27,7 @@ app.controller('IndexController', function($scope){
 
 // Artworks in exhibition
 app.controller('ExhibitionController', ['$scope', '$rootScope', function($scope, $rootScope){
+  // This is sharing state with root app? Maybe turn into a service?
   $scope.artworks = [];
   $rootScope.artists.forEach(function(artist) {
     artist.artworks.forEach(function(artwork) {
@@ -36,7 +37,7 @@ app.controller('ExhibitionController', ['$scope', '$rootScope', function($scope,
       $scope.artworks.push(artwork);
     });
   });
-  this.orderProp = 'artwork.artist_last';
+  This.orderProp = 'artwork.artist_last';
 }]);
 
 // On click, artworks expand to full size
